@@ -1,10 +1,6 @@
 require 'gosu' 
 require 'ruby2d'
 
-Square.new(x: 320, y: 240, size: 50, color: 'red') #create prototype
-square1 = Square.new(x: 320, y: 240, size: 50, color: 'red') #create prototype
-
-
 
 class Player
     def initialize
@@ -48,6 +44,11 @@ end
 class Tutorial < Gosu::Window #update() and draw() are overrides of methods defined by gosu::window
     def initialize
         super 640, 480
+
+        Square.new(x: 320, y: 240, size: 50, color: 'red') #create prototype
+        @square1 = Square.new(x: 320, y: 240, size: 50, color: 'red') #create prototype
+
+
         self.caption = "Gosu Tutorial: Ruby Sample Game"
         @player = Player.new
         @player.warp(320, 240)
@@ -69,8 +70,9 @@ class Tutorial < Gosu::Window #update() and draw() are overrides of methods defi
 
     def draw #draw() is also called 60 times per second, but may be skipped
              #should contain code that redraw the whole scene, no game logic
-        square1 = Square.new(x: 320, y: 240, size: 50, color: 'red')
+        
         @player.draw 
+        @square1
        
      end
 
